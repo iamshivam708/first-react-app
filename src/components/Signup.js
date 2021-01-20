@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Header from './Header'
 
 export class Signup extends Component {
     
@@ -31,6 +32,7 @@ export class Signup extends Component {
         })
     }
     handleSubmit = e =>{
+        e.preventDefault();
         const user = {
             name: this.state.username,
             email: this.state.email,
@@ -48,13 +50,16 @@ export class Signup extends Component {
     render() {
         return (
             <div>
+                <Header></Header>
+            <div className="container mt-5">
+                <h3>Signup Form</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="username" onChange={this.handleUserName} placeholder="Enter Name" />
-                    <input type="email" name="email" onChange={this.handleEmail} placeholder="Enter Email"/>
-                    <input type="password" name="password" onChange={this.handlePassword} placeholder="Enter Password"/>
-                    <button type="submit">Submit</button>
+                    <input type="text" className="form-control mt-2" name="username" onChange={this.handleUserName} placeholder="Enter Name" />
+                    <input type="email" className="form-control mt-2" name="email" onChange={this.handleEmail} placeholder="Enter Email"/>
+                    <input type="password" className="form-control mt-2" name="password" onChange={this.handlePassword} placeholder="Enter Password"/>
+                    <button type="submit" className="btn btn-primary mt-2">Submit</button>
                 </form>
-                {this.state.username}-{this.state.email}-{this.state.password}
+            </div>
             </div>
         )
     }
